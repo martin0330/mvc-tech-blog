@@ -1,0 +1,11 @@
+<div>
+    <p> Check out the newest and coolest posts on your favorite tech!</p>
+</div>
+
+<ul class="list-post">
+    {{#each posts as |post|}}
+    <li>
+        {{> post-info post }}
+    </li>
+    {{/each}}
+</ul>
