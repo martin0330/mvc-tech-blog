@@ -1,31 +1,38 @@
-<section>
-    <h2>Create New Post</h2>
-
-    <form class="new-post-form">
-        <div>
-            <label for="post-title">Title</label>
-            <input type="text" id="post-title" name="post-title" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech-Blog</title>
+    <link rel="stylesheet" href="/stylesheet/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>
+                <a href="/">Dashboard</a>
+            </h1>
+            <nav>
+                {{#if loggedIn}}
+                <button id="logout" class="btn-logout">logout</button>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
+            </nav>
+        </header>
+        <div class="site-row">
+            <div class="site-name">
+                <h1>Tech-Blog</h1>
+            </div>
         </div>
-        <div>
-            <label for="post-url">Link</label>
-            <input id="post-url" name="post-url" />
-        </div>
-        <button type="submit" class="btn">Create</button>
-    </form>
-</section>
-
-{{#if posts.length}}
-<section>
-    <h2>Your Posts</h2>
-    <ol>
+        <main>
+            <ul class="list-post">
         {{#each posts as |post|}}
         <li>
-            {{> post-info post}}
-            <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+        {{> edit-post post }}
         </li>
         {{/each}}
-    </ol>
-</section>
-{{/if}}
-
-<script src="/javascript/add-post.js"></script>
+    </ul>
+</body>
+</html>
