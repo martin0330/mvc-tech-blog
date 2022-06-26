@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const sequelize = require('../config/connection');
+const { Post, User, Comment, Vote } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
@@ -7,11 +8,10 @@ router.get('/', (req, res) => {
     Post.findAll({
         attributes: [
             'id',
-            'post_url',
             'title',
-            'sm_site',
             'created_at',
             'post_body',
+            [sequelize.literal('((SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id) - (SELECT COUNT(*) FROM Downvote WHERE post.id = Downvote.post_id))'), 'vote_count']
         ],
         include: [
             {
@@ -58,11 +58,10 @@ router.get('/post/:id', (req, res) => {
         },
         attributes: [
             'id',
-            'post_url',
             'title',
             'created_at',
-            'sm_site',
             'post_body',
+            [sequelize.literal('((SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id) - (SELECT COUNT(*) FROM Downvote WHERE post.id = Downvote.post_id))'), 'vote_count']
         ],
         include: [
             {
@@ -98,14 +97,6 @@ router.get('/post/:id', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
-
-
-});
-
-router.get('/new-post', (req, res) => {
-    res.render('new-post', {
-        loggedIn: true
-    })
 });
 
 module.exports = router;
