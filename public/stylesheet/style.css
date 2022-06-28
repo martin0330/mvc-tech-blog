@@ -4,7 +4,7 @@
 }
 
 .new-post{
-    background-color: #0bd3d3 ;
+    background-color: lightgray ;
     color: black;
     display: block;
     width: 150px;
@@ -12,7 +12,7 @@
     text-align: center;
     flex: 6;
     border-style: solid;
-    border-color: #0bd3d3;
+    border-color: lightgray;
     padding: 10px 632px;
 }
 
@@ -29,7 +29,7 @@
 .hero {
     display: flex;
     justify-content: space-between;
-    border: solid #0bd3d3;
+    border: solid lightgray;
     align-items: center;
     
     
@@ -52,17 +52,17 @@ h1 {
 }
 
 main {
-    border: solid #0bd3d3;
+    border: solid lightgray;
     margin-top: 50px;
     align-items: center;
 }
 
 .login-page {
-    border: solid #0bd3d3;
+    border: solid lightgray;
     border-width: 2px;
     padding: 4em;
     margin: 4rem;
-    border-bottom: 1px solid #0bd3d3;
+    border-bottom: 1px solid lightgray;
     align-items: center;
     float: right;
     left: -50%;
