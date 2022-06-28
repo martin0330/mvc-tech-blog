@@ -3,7 +3,6 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helper');
-const passport = require('./config/passport');
 
 
 
@@ -33,9 +32,6 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(passport.authenticate("session"));
 
 
 app.use(require('./controllers/'));
