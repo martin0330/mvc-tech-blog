@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech-Blog</title>
-    <link rel="stylesheet" href="/stylesheet/style.css">
+    <title>The Tech Blog - Dashboard</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <h1>
-                <a href="/">Dashboard</a>
-            </h1>
-            <nav>
-                {{#if loggedIn}}
-                <button id="logout" class="btn-logout">logout</button>
-                {{else}}
-                <a href="/login">login</a>
-                {{/if}}
-            </nav>
-        </header>
-        <div class="site-row">
-            <div class="site-name">
-                <h1>Tech-Blog</h1>
-            </div>
-        </div>
-        <main>
-            <ul class="list-post">
+    <ul class="list-post">
         {{#each posts as |post|}}
         <li>
         {{> edit-post post }}
         </li>
         {{/each}}
     </ul>
+
+</div>
+<footer> <a href= "/dashboard/new">New Post</a></footer>
+
+    
 </body>
+
 </html>

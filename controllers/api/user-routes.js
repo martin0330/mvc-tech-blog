@@ -1,7 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment, Vote } = require('../../models')
-
-
+const { User, Post, Comment, Vote } = require('../../models');
 
 //get all users
 router.get('/', (req, res) => {
@@ -25,7 +23,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Post,
-                attributes: ['id', 'title', 'post_url', 'post_body', 'sm_site'],
+                attributes: ['id', 'title'],
                 as: "posts"
             },
             {
@@ -104,8 +102,6 @@ router.post('/login', (req, res) => {
         });
     });
 });
-
-
 
 router.post('/logout', (req, res) => {
     if (req.session.loggedIn) {
